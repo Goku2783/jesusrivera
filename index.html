@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width">
   <title>MAD LIB</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body>
@@ -43,6 +45,45 @@
   <button onclick="printMadLib()">View Madlib</button><br><br>
   <p id="madlib"></p>
   <script src="script.js"></script>
+
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBPiVe3iSofGMP6MEty3dlv10MO1bKFGsU",
+    authDomain: "madlibs-a107e.firebaseapp.com",
+    projectId: "madlibs-a107e",
+    storageBucket: "madlibs-a107e.appspot.com",
+    messagingSenderId: "294362686214",
+    appId: "1:294362686214:web:38ff691b110e9792fdf487"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  </script>
+
+  <!-- JS for Firebase -->
+	<script type="module">
+  	// setup firebase app and firestore database
+  	import { getFirestore } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+  	 const firebaseConfig = {
+       apiKey: "AIzaSyBPiVe3iSofGMP6MEty3dlv10MO1bKFGsU",
+       authDomain: "madlibs-a107e.firebaseapp.com",
+       projectId: "madlibs-a107e",
+       storageBucket: "madlibs-a107e.appspot.com",
+       messagingSenderId: "294362686214",
+       appId: "1:294362686214:web:38ff691b110e9792fdf487"
+     };
+  	const app = firebase.initializeApp(firebaseConfig);
+  	var db = getFirestore(app);
+  	console.log("firebase setup complete!");
+	</script>
+	<script src="script.js"></script>
+
 </body>
 
 </html>
