@@ -18,7 +18,7 @@ function printMadLib() {
 }
 //Save the completed story element as a string
 var story = document.getElementById("madlib").innerHTML;
-console.log("story: " + story);
+console.log ("story: " + story);
 
 //create JS object to store data first
 var storyData = {
