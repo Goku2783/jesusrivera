@@ -1,3 +1,16 @@
+// setup firebase app and firestore database
+const firebaseConfig = {
+       apiKey: "AIzaSyBPiVe3iSofGMP6MEty3dlv10MO1bKFGsU",
+       authDomain: "madlibs-a107e.firebaseapp.com",
+       projectId: "madlibs-a107e",
+       storageBucket: "madlibs-a107e.appspot.com",
+       messagingSenderId: "294362686214",
+       appId: "1:294362686214:web:38ff691b110e9792fdf487"};
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+console.log("firebase setup complete!");
+
+
 function printMadLib() {
   var adjective1 = document.getElementById("adjective1").value;
   var adjective2 = document.getElementById("adjective2").value;
