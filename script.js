@@ -58,14 +58,14 @@ function createMadLib() {
 function saveMadLib() {
   console.log("saveMadLib() called");
   var storyData = createMadLib();
-  db.collection("story1").doc(storyData.storyName).set(storyData);
+  db.collection("madlib").doc(storyData.storyName).set(storyData);
   alert(storyData.storyName + "save to database!");
 }
 
 function retrieveMadLib() {
   console.log("retrieveMadLib() called");
   var storyName = prompt("Enter the name of the story you want to look up:");
-  db.collection("story")
+  db.collection("madlib")
   .doc(storyName)
   .get()
   .then((doc) => {
@@ -88,7 +88,7 @@ function retrieveMadLib() {
 function editMadLib() {
   console.log("editMadLib() called");
   var storyName = prompt("Enter the name of the story you want to edit:");
-  db.collection("story")
+  db.collection("madlib")
   .doc(storyName)
   .get()
   .then((doc) => {
@@ -124,7 +124,7 @@ function editMadLib() {
 function deleteMadLib() {
   console.log("deleteMadLib() called");
   var storyName = prompt("Enter the name of the story you want to delete:");
-  db.collection("story")
+  db.collection("madlib")
   .doc(storyName)
   .get()
   .then((doc) => {
