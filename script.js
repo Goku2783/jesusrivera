@@ -132,7 +132,7 @@ function deleteMadLib() {
       console.log("Document data:", doc.data());
       var storyData = doc.data();
       document.getElementById("story").innerHTML = storyData.storyName + " successfully deleted!";
-      db.collection("story").doc(storyName).delete();
+      db.collection("madlib").doc(storyName).delete();
     } else {
       console.log("No such document!");
       document.getElementById("story").innerHTML = "Story not found!";
