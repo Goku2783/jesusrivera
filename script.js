@@ -55,8 +55,6 @@ function createMadLib() {
   return storyData;
 }
 
-
-
 function saveMadLib() {
   console.log ("saveMadLib called");
   var storyData = createMadLib();
