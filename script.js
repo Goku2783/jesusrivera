@@ -10,6 +10,8 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 console.log("firebase setup complete!");
 
+var storyName = document.getElementById("storyName").value;
+
 function createMadLib() {
   var adjective1 = document.getElementById("adjective1").value;
   var adjective2 = document.getElementById("adjective2").value;
@@ -52,6 +54,8 @@ function createMadLib() {
   console.log("storyJSON: " + storyJSON);
   return storyData;
 }
+
+
 
 function saveMadLib() {
   console.log ("saveMadLib called");
