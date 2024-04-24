@@ -13,22 +13,22 @@ h1 {text-align: center;
   font-family: "Brush Script MT", Courier, monospace;
   color: orange;}
 
-form {margin: 0cap 108cap 5cap 5cap;
-      border: 4px solid #359244;
-      padding: 15px;
-      padding-left: 20px;
+form {margin: 0cap 50cap 5cap 5cap;
+      border: 10px solid #359244;
+      padding: 20px;
+      padding-left: 25px;
       background-color: #fafafa;
-      color: black; font-size: 15px;
+      color: black; font-size: 20px;
      }
 
 p {margin: 0cap 5cap 5cap 5cap;
    border: 4px solid #f29c07;
    padding: 20px;
    background-color: #fafafa;
-   color: black; font-size: 15px;
-   font-size: 200px:
- }
+   color: black;
+   font-size: 20px;}
 
-button {margin-left: 5cap;}
+button {font-size: 15px; margin: 10px;
+  }
 
 script {border: 5px white; border-width: 5px;}

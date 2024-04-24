@@ -10,8 +10,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 console.log("firebase setup complete!");
 
-
-function printMadLib() {
+function createMadLib() {
   var adjective1 = document.getElementById("adjective1").value;
   var adjective2 = document.getElementById("adjective2").value;
   var adjective3 = document.getElementById("adjective3").value;
@@ -51,5 +50,12 @@ function printMadLib() {
   };
   var storyJSON = JSON.stringify(storyData);
   console.log("storyJSON: " + storyJSON);
-  return storyJSON;
+  return storyData;
 }
+
+function saveMadLib() {
+  console.log ("saveMadLib called");
+  var storyData = createMadLib();
+  db.collection("madlib").doc(storyData.storyName).set(storyData);
+  alert(storyData.storyName + "save to database!");}
+
