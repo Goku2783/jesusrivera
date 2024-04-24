@@ -50,6 +50,7 @@ function createMadLib() {
     color: color,
     name_place: name_place,
     storyName: storyName,
+    story = madlibs,
   };
   var storyJSON = JSON.stringify(storyData);
   console.log("storyJSON: " + storyJSON);
@@ -65,7 +66,7 @@ function saveMadLib() {
 
 function retrieveMadLib() {
   console.log("retrieveMadLib() called");
-  var storyName = prompt("enter the name of the story you want to look up:");
+  var storyName = prompt("Enter the name of the story you want to look up:");
   db.collection("madlibs")
   .doc(storyName)
   .get()
@@ -74,7 +75,8 @@ function retrieveMadLib() {
       console.log("Document data:", doc.data());
       var storyData = doc.data();
       document.getElementById("story").innerHTML = storyData.story;
-    } else {
+    } 
+    else {
       console.log("No such document!"); 
       document.getElementById("story").innerHTML = "Story not found!";
     }
