@@ -50,7 +50,6 @@ function createMadLib() {
     color: color,
     name_place: name_place,
     storyName: storyName,
-    story = madlibs,
   };
   var storyJSON = JSON.stringify(storyData);
   console.log("storyJSON: " + storyJSON);
