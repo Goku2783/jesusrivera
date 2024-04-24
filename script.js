@@ -30,11 +30,11 @@ function createMadLib() {
 
   document.getElementById("madlibs").innerHTML= "Yoda is a Jedi "+ noun1 +" who trained Jedi for " + large_number + " years on how to use the force. He is known for his " + adjective1 + " size, " + color +" skin and " + adjective2 + " way of pronouncing words. In the movie Star Wars: A " + adjective3 + " Hope, Luke Skywalker " + verb + "s Yoda after " + verb_ing +" his " + noun2 + " into a " + noun3 + " on a " + adjective4 + " planet called " + name_place + ". Yoda helps Luke to become a Jedi " + noun4 + ". Yoda remains a " + noun5 + " to Luke, training him to use The Force to defeat Vader and the Empire.";
 
-  var madlib = document.getElementById("madlibs").innerHTML;
+  var madlibs = document.getElementById("madlibs").innerHTML;
   console.log("story: " + madlib);  
   var storyData = {
     timestamp: Date.now(),
-    story: madlib,  
+    story: madlibs,  
     adjective1: adjective1,
     adjective2: adjective2,
     adjective3: adjective3,
@@ -86,5 +86,61 @@ function retrieveMadLib() {
   });
 }
 
+function editMadLib() {
+  console.log("editMadLib() called");
+  var storyName = prompt("Enter the name of the story you want to edit:");
+  db.collection("story")
+  .doc(storyName)
+  .get()
+  .then((doc) => {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      var storyData = doc.data();
 
+      document.getElementById("adjective1").value = storyData.adjective1;
+      document.getElementById("adjective2").value = storyData.adjective2;
+      document.getElementById("adjective3").value = storyData.adjective3;
+      document.getElementById("adjective4").value = storyData.adjective4;
 
+      document.getElementById("noun1").value = storyData.noun1;
+      document.getElementById("noun2").value = storyData.noun2;
+      document.getElementById("noun3").value = storyData.noun3;
+      document.getElementById("noun4").value = storyData.noun4;
+      document.getElementById("noun5").value = storyData.noun5;
+    
+      document.getElementById("large_number").value = storyData.large_number;
+      document.getElementById("verb").value = storyData.verb;
+      document.getElementById("verb_ing").value = storyData.verb_ing;
+      document.getElementById("color").value = storyData.color;
+      document.getElementById("name_place").value = storyData.name_place;
+      document.getElementById("storyName").value = storyData.storyName;
+
+      document.getElementById("story").innerHTML = storyData.story;
+    } else {
+    console.log("No such document!");
+    document.getElemenById("story").innerHTML = "Story not found!";
+  }});
+}
+
+function deleteMadLib() {
+  console.log("deleteMadLib() called");
+  var storyName = prompt("Enter the name of the story you want to delete:");
+  db.collection("story")
+  .doc(storyName)
+  .get()
+  .then((doc) => {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      var storyData = doc.data();
+      document.getElementById("story").innerHTML = storyData.storyName + " successfully deleted!";
+      db.collection("story").doc(storyName).delete();
+    } else {
+      console.log("No such document!");
+      document.getElementById("story").innerHTML = "Story not found!";
+    }
+  })
+  .catch((error) => {
+    console.log("Error getting document:", error);
+    document.getElementById("story").innerHTML = "Story not found!";  
+  });
+}
