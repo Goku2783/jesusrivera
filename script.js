@@ -10,8 +10,6 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 console.log("firebase setup complete!");
 
-var storyName = document.getElementById("storyName").value;
-
 function createMadLib() {
   var adjective1 = document.getElementById("adjective1").value;
   var adjective2 = document.getElementById("adjective2").value;
@@ -27,10 +25,12 @@ function createMadLib() {
   var verb_ing = document.getElementById("verb_ing").value;
   var color = document.getElementById("color").value;
   var name_place = document.getElementById("name_place").value;
+  var storyName = document.getElementById("storyName").value;
 
-  document.getElementById("madlib").innerHTML= "Yoda is a Jedi "+ noun1 +" who trained Jedi for " + large_number + " years on how to use the force. He is known for his " + adjective1 + " size, " + color +" skin and " + adjective2 + " way of pronouncing words. In the movie Star Wars: A " + adjective3 + " Hope, Luke Skywalker " + verb + "s Yoda after " + verb_ing +" his " + noun2 + " into a " + noun3 + " on a " + adjective4 + " planet called " + name_place + ". Yoda helps Luke to become a Jedi " + noun4 + ". Yoda remains a " + noun5 + " to Luke, training him to use The Force to defeat Vader and the Empire.";
 
-  var madlib = document.getElementById("madlib").innerHTML;
+  document.getElementById("madlibs").innerHTML= "Yoda is a Jedi "+ noun1 +" who trained Jedi for " + large_number + " years on how to use the force. He is known for his " + adjective1 + " size, " + color +" skin and " + adjective2 + " way of pronouncing words. In the movie Star Wars: A " + adjective3 + " Hope, Luke Skywalker " + verb + "s Yoda after " + verb_ing +" his " + noun2 + " into a " + noun3 + " on a " + adjective4 + " planet called " + name_place + ". Yoda helps Luke to become a Jedi " + noun4 + ". Yoda remains a " + noun5 + " to Luke, training him to use The Force to defeat Vader and the Empire.";
+
+  var madlib = document.getElementById("madlibs").innerHTML;
   console.log("story: " + madlib);  
   var storyData = {
     timestamp: Date.now(),
@@ -49,6 +49,7 @@ function createMadLib() {
     verb_ing: verb_ing,
     color: color,
     name_place: name_place,
+    storyName: storyName,
   };
   var storyJSON = JSON.stringify(storyData);
   console.log("storyJSON: " + storyJSON);
@@ -56,8 +57,11 @@ function createMadLib() {
 }
 
 function saveMadLib() {
-  console.log ("saveMadLib called");
+  console.log("saveMadLib() called");
   var storyData = createMadLib();
-  db.collection("madlib").doc(storyData.storyName).set(storyData);
-  alert(storyData.storyName + "save to database!");}
+  db.collection("madlibs").doc(storyData.storyName).set(storyData);
+  alert(storyData.storyName + "save to database!");
+}
+
+
 
