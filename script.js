@@ -58,7 +58,7 @@ function createMadLib() {
 function saveMadLib() {
   console.log("saveMadLib() called");
   var storyData = createMadLib();
-  db.collection("story").doc(storyData.storyName).set(storyData);
+  db.collection("story1").doc(storyData.storyName).set(storyData);
   alert(storyData.storyName + "save to database!");
 }
 
