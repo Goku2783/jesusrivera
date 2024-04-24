@@ -64,7 +64,7 @@ function saveMadLib() {
 }
 
 function retrieveMadLib() {
-  console.log("retrieveMadLib() called")
+  console.log("retrieveMadLib() called");
   var storyName = prompt("enter the name of the story you want to look up:");
   db.collection("madlibs")
   .doc(storyName)
