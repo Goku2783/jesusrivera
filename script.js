@@ -34,7 +34,7 @@ function createMadLib() {
   console.log("story: " + madlib);  
   var storyData = {
     timestamp: Date.now(),
-    story: madlib,
+    story: madlib,  
     adjective1: adjective1,
     adjective2: adjective2,
     adjective3: adjective3,
@@ -59,14 +59,14 @@ function createMadLib() {
 function saveMadLib() {
   console.log("saveMadLib() called");
   var storyData = createMadLib();
-  db.collection("madlibs").doc(storyData.storyName).set(storyData);
+  db.collection("story").doc(storyData.storyName).set(storyData);
   alert(storyData.storyName + "save to database!");
 }
 
 function retrieveMadLib() {
   console.log("retrieveMadLib() called");
   var storyName = prompt("Enter the name of the story you want to look up:");
-  db.collection("madlibs")
+  db.collection("madlib")
   .doc(storyName)
   .get()
   .then((doc) => {
