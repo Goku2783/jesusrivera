@@ -63,5 +63,27 @@ function saveMadLib() {
   alert(storyData.storyName + "save to database!");
 }
 
+function retrieveMadLib() {
+  console.log("retrieveMadLib() called")
+  var storyName = prompt("enter the name of the story you want to look up:");
+  db.collection("madlibs")
+  .doc(storyName)
+  .get()
+  .then((doc) => {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      var storyData = doc.data());
+      document.getElementById("madlibs").innerHTML = storyData.story;
+    } else {
+      console.log("No such document!"); 
+      document.getElementById("madlibs").innerHTML = "Story not found!";
+    }
+  })
+  .catch((error) => {
+    console.log("Error getting document:", error);
+    document.getElementById("madlibs").innerHTML = "Story not found!";
+  });
+}
+
 
 
