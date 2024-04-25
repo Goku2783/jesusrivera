@@ -118,7 +118,12 @@ function editMadLib() {
     } else {
     console.log("No such document!");
     document.getElemenById("story").innerHTML = "Story not found!";
-  }});
+    }
+  });
+  .catch((error) => {
+    console.log("Error getting document:", error);
+    document.getElementById("story").innerHTML = "Story not found!";
+  }); 
 }
 
 function deleteMadLib() {
