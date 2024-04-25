@@ -54,14 +54,14 @@ function createMadLib() {
   console.log("storyJSON: " + storyJSON);
   return storyData;
 }
-
+//this method saves the madlib to the database
 function saveMadLib() {
   console.log("saveMadLib() called");
   var storyData = createMadLib();
   db.collection("madlib").doc(storyData.storyName).set(storyData);
   alert(storyData.storyName + "save to database!");
 }
-
+//this method retrieves the madlib from the database
 function retrieveMadLib() {
   console.log("retrieveMadLib() called");
   var storyName = prompt("Enter the name of the story you want to look up:");
@@ -84,7 +84,7 @@ function retrieveMadLib() {
     document.getElementById("story").innerHTML = "Story not found!";
   });
 }
-
+//This method lets you recall the madlib to edit or make changes to it. 
 function editMadLib() {
   console.log("editMadLib() called");
   var storyName = prompt("Enter the name of the story you want to edit:");
@@ -125,7 +125,7 @@ function editMadLib() {
     document.getElementById("story").innerHTML = "Story not found!";
   });
 }
-
+//This method deletes the selected data or story from the database.
 function deleteMadLib() {
   console.log("deleteMadLib() called");
   var storyName = prompt("Enter the name of the story you want to delete:");
